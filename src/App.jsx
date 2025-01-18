@@ -22,8 +22,7 @@ function App() {
   return <div>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
         <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-          <h1 className="text-2xl font-bold text-center mb-4">
-            Weather App
+          <h1 className="text-2xl font-bold text-center mb-4"> Weather App
             <span className="text-sm font-normal ml-2">
               <a href="https://github.com/EmaniAditya" target="_blank" rel="noopener noreferrer" className="text-blue-500">
                 Developed by Aditya
@@ -31,20 +30,14 @@ function App() {
             </span>
           </h1>
           <div className="flex items-center mb-4">
-            <input
-              type="text"
-              placeholder="City Name: try 'Raipur'"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+            <input type="text" placeholder="City Name: try 'Raipur'" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
               className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <button
-              onClick={() => {
+            <button onClick={() => {
                 setCityName(inputValue);
                 setWeather("loading...");
               }}
-              className="ml-2 bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
+              className="ml-2 bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
               Fetch
             </button>
           </div>
