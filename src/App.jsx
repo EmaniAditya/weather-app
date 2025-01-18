@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Input from "./components/Input";
-import WeatherInfo from "./components/WeatherInfo";
-import Forecast from "./components/Forecast";
 
 function App() {
   const [weather, setWeather] = useState();
-  const [cityName, setCityName] = useState("");
+  const [cityName, setCityName] = useState("Banglore");
   const [inputValue, setInputValue] = useState(cityName);
 
   useEffect(() => {
@@ -22,26 +19,56 @@ function App() {
     }
   }, [cityName]);
 
-  const fetchWeather = () => {
-    setCityName(inputValue);
-    setWeather("loading...");
-  };
-
-  return <div>
+  return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
         <h1 className="text-2xl font-bold text-center mb-4">Weather App</h1>
-        <Input inputValue={inputValue} setInputValue={setInputValue} fetchWeather={fetchWeather} />
-        {weather && (
-          <>
-            <WeatherInfo cityName={cityName} weather={weather} />
-            <h2 className="text-xl font-bold mt-4">Forecasts</h2>
-            <Forecast forecast={weather.forecast} />
-          </>
-        )}
+        <div className="flex items-center mb-4">
+          <input
+            type="text"
+            placeholder="City Name"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <button
+            onClick={() => {
+              setCityName(inputValue);
+              setWeather("loading...");
+            }}
+            className="ml-2 bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            Fetch
+          </button>
+        </div>
+        <div>
+          {weather ? (
+            <div className="text-center">
+              <p className="text-xl font-semibold">{cityName}</p>
+              <p className="text-lg">{weather.description}</p>
+              <p className="text-4xl font-bold mt-2">{weather.temperature}</p>
+              <p className="text-sm text-gray-500">Wind: {weather.wind}</p>
+              <h2 className="text-xl font-bold mt-4">Forecasts</h2>
+              <div className="mt-2 grid grid-cols-1 gap-4">
+                {weather.forecast.map((day, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-gray-100 rounded-lg shadow-sm"
+                  >
+                    <p className="text-lg font-semibold">Day {day.day}</p>
+                    <p>Temperature: {day.temperature}</p>
+                    <p>Wind: {day.wind}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="text-center text-gray-500">Loading or no data available...</p>
+          )}
+        </div>
       </div>
     </div>
-  </div>
+  );
 }
 
 export default App;
