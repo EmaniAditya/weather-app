@@ -20,5 +20,5 @@ A simple Weather App that fetches and displays live weather data and forecasts f
 
 ## Additional Details
 
-- Developed by [Aditya](https://github.com/EmaniAditya) and is available on [https:/emaniaditya/github.io/weather-app](https:/emaniaditya/github.io/weather-app)
+- Developed by [Aditya](https://github.com/EmaniAditya) and is available on [https:/emaniaditya.github.io/weather-app](https:/emaniaditya.github.io/weather-app)
 - It is built on top of the [weather-api](https://github.com/robertoduessmann/weather-api)
