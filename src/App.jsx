@@ -34,7 +34,7 @@ function App() {
               className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             <button onClick={() => {
-                setCityName(inputValue);
+                setCityName(inputValue.trim());
                 setWeather("loading...");
               }}
               className="ml-2 bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
