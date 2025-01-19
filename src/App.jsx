@@ -21,7 +21,7 @@ function App() {
 
   return <div>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
-        <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
           <h1 className="text-2xl font-bold text-center mb-4"> Weather App
             <span className="text-sm font-normal ml-2">
               <a href="https://github.com/EmaniAditya" target="_blank" className="text-blue-500">
@@ -49,19 +49,22 @@ function App() {
                 <p className="text-4xl font-bold mt-2">{weather.temperature}</p>
                 <p className="text-sm text-gray-500">Wind: {weather.wind}</p>
                 <h2 className="text-xl font-bold mt-4">Forecasts</h2>
-                <div className="mt-2 grid grid-cols-3 gap-4">
+                <div className="mt-2">
                   {Array.isArray(weather.forecast) && weather.forecast.length > 0 ? (
-                    weather.forecast.map((day, index) => (
-                      <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-sm">
-                        <p className="text-lg font-light">Day {day.day}</p>
-                        <p className="text-4xl font-bold mt-2">{day.temperature}</p>
-                        <p className="text-sm text-gray-500">{day.wind}</p>
-                      </div>
-                    ))
+                    <div className="grid grid-cols-3 gap-4">
+                      {weather.forecast.map((day, index) => (
+                        <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-sm">
+                          <p className="text-lg font-light">Day {day.day}</p>
+                          <p className="text-4xl font-bold mt-2">{day.temperature}</p>
+                          <p className="text-sm text-gray-500">{day.wind}</p>
+                        </div>
+                      ))}
+                    </div>
                   ) : (
                     <p className="text-sm text-gray-500 mt-2">No forecast data available</p>
                   )}
                 </div>
+
               </div>
             ) : (
               <p className="text-center text-gray-500">Loading or no data available...</p>
