@@ -24,7 +24,7 @@ function App() {
         <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
           <h1 className="text-2xl font-bold text-center mb-4"> Weather App
             <span className="text-sm font-normal ml-2">
-              <a href="https://github.com/EmaniAditya" target="_blank" rel="noopener noreferrer" className="text-blue-500">
+              <a href="https://github.com/EmaniAditya" target="_blank" className="text-blue-500">
                 Developed by Aditya
               </a>
             </span>
@@ -50,13 +50,17 @@ function App() {
                 <p className="text-sm text-gray-500">Wind: {weather.wind}</p>
                 <h2 className="text-xl font-bold mt-4">Forecasts</h2>
                 <div className="mt-2 grid grid-cols-3 gap-4">
-                  {weather.forecast.map((day, index) => (
-                    <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-sm">
-                      <p className="text-lg font-light">Day {day.day}</p>
-                      <p className="text-4xl font-bold mt-2">{day.temperature}</p>
-                      <p className="text-sm text-gray-500">{day.wind}</p>
-                    </div>
-                  ))}
+                  {Array.isArray(weather.forecast) && weather.forecast.length > 0 ? (
+                    weather.forecast.map((day, index) => (
+                      <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-sm">
+                        <p className="text-lg font-light">Day {day.day}</p>
+                        <p className="text-4xl font-bold mt-2">{day.temperature}</p>
+                        <p className="text-sm text-gray-500">{day.wind}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-gray-500 mt-2">No forecast data available</p>
+                  )}
                 </div>
               </div>
             ) : (
@@ -64,7 +68,7 @@ function App() {
             )}
           </div>
           <div className="text-center text-sm text-gray-500 mt-4">
-            Built on <a href="https://github.com/robertoduessmann/weather-api" target="_blank" rel="noopener noreferrer" className="text-blue-500">weather-api</a>
+            Built on <a href="https://github.com/robertoduessmann/weather-api" target="_blank" className="text-blue-500">weather-api</a>
           </div>
         </div>
       </div>
